@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <h1>Programa Cálculo do Peso Ideal</h1>
+    <p>Nome:<input type="text" id="inNome"></p>
+    <p>sexo:
+        <input type="radio" name="sexo" id="inputRbMasculino" checked="True">Masculino
+        <input type="radio" name="sexo" id="inputRbFeminino" checked="True">Feminino
+    </p>
+    <p>
+        Altura: <input type="text" id="inAltura" value="1.74">
+    </p>
+        <input type="button" value="Calcular Peso Ideal" id="btCalcular">
+        <input type="button" value="Limpar Campos" id="btLimpar">
+
+    <h3 id="outresposta"></h3>
+<body>
+    <script>
+        var inNome = document.getElementById("inNome");
+        var rbMasculino = document.getElementById("inputRbMasculino");
+        var rbFeminino = document.getElementById("inputRbFeminino");
+        var inAltura = document.getElementById("inAltura");
+        var outresposta = document.getElementById("outresposta");
+        function limparCampos(){
+            inNome.value = "";
+            rbMasculino.checked = false;
+            rbFeminino.checked = false;
+            inAltura.value = "";
+            outresposta.textContent = "";
+            inNome.focus;
+        }
+        var btLimpar = document.getElementById("btLimpar");
+        btLimpar.addEventListener("click", limparCampos);
+
+        function pesoIdeal() {
+            var Nome = inNome.value;
+            var altura = Number(inAltura.value);
+            var rbMasculino = inputRbMasculino.checked;
+            var rbFeminino = inputRbFeminino.checked;
+            
+            if(Nome == "" || (rbMasculino == false && rbFeminino == false)) {
+                alert ("Digite o seu nome e selecione o sexo !");
+                inNome.focus();
+                return
+            }
+            if(altura == 0 || isNaN(altura)) {
+                alert ("Digite sua Altura !")
+                inAltura.focus();
+                return;
+            }
+            if(rbMasculino) {
+                var peso = 22 * Math.pow(altura, 2);
+            } else {
+                var peso = 21 * Math.pow(altura, 2)
+            }
+            outresposta.textContent = "O seu peso ideal é: " + peso + " kgs"
+        }
+        var btnCalcular = document.getElementById("btCalcular");
+        btnCalcular.addEventListener("click", pesoIdeal);
+    </script>
+</body>
+</html>
