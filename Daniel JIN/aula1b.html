@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <h1>Programa Tabuada</h1>
+    <hr>
+    <p>Número: <input type="text" value="4" id="num"></p>
+    <p><input type="button" value="Mostrar Tabuada" onclick="tabua()"></p>
+    <pre id="resposta"></pre>
+<body>
+    <script>
+        function tabua() {
+            var numero = Number(document.getElementById("num").value);
+            var mensa = "";
+            for(let i = 0; i <= 10; i++){
+                var resultado = numero * i;
+                mensa += numero + " x " + i + " = " + resultado + "\n";
+            }
+            document.getElementById("resposta").textContent = mensa;
+        }
+    </script>
+</body>
+</body>
+</html>
